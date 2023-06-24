@@ -8,11 +8,16 @@ export const Home = ({query}) => {
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
     const getProduct = async () => {
-      const result = await fetch(`http://localhost:8080/${userId}`, {
-        headers: {
-          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      });
+      const result = await fetch(
+        `https://mern-project-beta-smoky.vercel.app/${userId}`,
+        {
+          headers: {
+            authorization: `bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
       const data = await result.json();
       setProductList(data);
     };
@@ -20,15 +25,18 @@ export const Home = ({query}) => {
     const deleteProduct = async(id)=>{
       if(window.confirm("Are you conform to delete data")){
 
-        const result = await fetch(`http://localhost:8080/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        });
+        const result = await fetch(
+          `https://mern-project-beta-smoky.vercel.app/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
         const data = await result.json();
         console.log(data);
         getProduct()

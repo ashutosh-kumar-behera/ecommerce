@@ -15,12 +15,19 @@ export const AddProduct =()=>{
     const navigate = useNavigate();
 
     const postProduct = async()=>{
-        const result = await fetch("http://localhost:8080/",{
-          method:"POST",
-          body:JSON.stringify(product),
-          headers: {"Content-Type":"application/json", 
-          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`
-        }});
+        const result = await fetch(
+          "https://mern-project-beta-smoky.vercel.app",
+          {
+            method: "POST",
+            body: JSON.stringify(product),
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
         const data = await result.json();
         console.log(data);
     }

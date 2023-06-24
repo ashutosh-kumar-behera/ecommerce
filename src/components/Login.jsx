@@ -13,11 +13,14 @@ export const Login = () => {
     const navigate = useNavigate()
 
     const postData = async()=>{
-        let result = await fetch("http://localhost:8080/login",{
-            method:"POST",
-            body:JSON.stringify(userDetails),
-            headers: {"Content-Type":"application/json"}
-        });
+        let result = await fetch(
+          "https://mern-project-beta-smoky.vercel.app/login",
+          {
+            method: "POST",
+            body: JSON.stringify(userDetails),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         result = await result.json();
         console.log(result);
         if(result.auth){

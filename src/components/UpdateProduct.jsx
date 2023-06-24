@@ -8,14 +8,19 @@ export const UpdateProduct =()=>{
     const navigate = useNavigate();
 
     const updateProduct = async()=>{
-        const result = await fetch(`http://localhost:8080/${product._id}`, {
-          method: "PUT",
-          body: JSON.stringify(product),
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`
-          },
-        });
+        const result = await fetch(
+          `https://mern-project-beta-smoky.vercel.app/${product._id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify(product),
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        );
         const data = await result.json();
         console.log(data);
     }
