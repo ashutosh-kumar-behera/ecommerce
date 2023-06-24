@@ -14,11 +14,14 @@ export const SignUp=()=>{
     const navigate = useNavigate()
 
     const postData = async()=>{
-        let result = await fetch("https://mern-project-beta-smoky.vercel.app", {
-          method: "POST",
-          body: JSON.stringify(userDetails),
-          headers: { "Content-Type": "application/json" },
-        });
+        let result = await fetch(
+          "https://mern-project-beta-smoky.vercel.app/register",
+          {
+            method: "POST",
+            body: JSON.stringify(userDetails),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         result = await result.json();
         console.log(result);
         localStorage.setItem("user", JSON.stringify(result.newUser));
