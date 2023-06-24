@@ -3,7 +3,14 @@ import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export const Home = ({query}) => {
-    const[productList, setProductList] = useState([]);
+    const [productList, setProductList] = useState([
+      {
+        name: "Loading",
+        price: "Loading",
+        category: "Loading",
+        company: "Loading",
+      },
+    ]);
     const navigate = useNavigate()
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
@@ -19,7 +26,11 @@ export const Home = ({query}) => {
         }
       );
       const data = await result.json();
-      setProductList(data);
+      if(data){
+        setProductList(data);
+      }else{
+        setProductList('');
+      }
     };
     
     const deleteProduct = async(id)=>{
