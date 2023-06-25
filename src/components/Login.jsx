@@ -14,7 +14,7 @@ export const Login = () => {
 
     const postData = async()=>{
         let result = await fetch(
-          "https://mern-project-beta-smoky.vercel.app/login",
+          "https://mern-api-ashutosh.vercel.app/login",
           {
             method: "POST",
             body: JSON.stringify(userDetails),

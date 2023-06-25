@@ -9,7 +9,7 @@ export const UpdateProduct =()=>{
 
     const updateProduct = async()=>{
         const result = await fetch(
-          `https://mern-project-beta-smoky.vercel.app/${product._id}`,
+          `https://mern-api-ashutosh.vercel.app/${product._id}`,
           {
             method: "PUT",
             body: JSON.stringify(product),

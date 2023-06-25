@@ -14,8 +14,7 @@ export const SignUp=()=>{
     const navigate = useNavigate()
 
     const postData = async()=>{
-        let result = await fetch(
-          "https://mern-project-beta-smoky.vercel.app/register",
+        let result = await fetch("https://mern-api-ashutosh.vercel.app//register",
           {
             method: "POST",
             body: JSON.stringify(userDetails),

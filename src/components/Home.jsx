@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const Home = ({query}) => {
     const [productList, setProductList] = useState([
       {
+        _id:12,
         name: "Loading",
         price: "Loading",
         category: "Loading",
@@ -16,9 +17,11 @@ export const Home = ({query}) => {
 
     const getProduct = async () => {
       const result = await fetch(
-        `https://mern-project-beta-smoky.vercel.app/${userId}`,
+        `https://mern-api-ashutosh.vercel.app/${userId}`,
         {
+          method: "GET",
           headers: {
+            "Content-Type": "application/json",
             authorization: `bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -37,7 +40,7 @@ export const Home = ({query}) => {
       if(window.confirm("Are you conform to delete data")){
 
         const result = await fetch(
-          `https://mern-project-beta-smoky.vercel.app/${id}`,
+          `https://mern-api-ashutosh.vercel.app/${id}`,
           {
             method: "DELETE",
             headers: {
